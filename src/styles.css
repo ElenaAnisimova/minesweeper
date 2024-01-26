@@ -1,0 +1,653 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background-color: none;
+  border: none;
+  cursor: pointer;
+}
+
+h4 {
+  font-weight: inherit;
+}
+
+:root {
+  --main-grey-color: rgb(135, 131, 131);
+}
+
+@font-face {
+  font-family: 'Calculator';
+  src: url(/src/assets/fonts/TypoDigitDemo-VG9lV.ttf);
+}
+
+@font-face {
+  font-family: 'Minesweeper';
+  src: url(/src/assets/fonts/mine-sweeper.ttf);
+}
+
+body {
+  background-color: rgb(221, 219, 219);
+}
+
+
+.wrapper {
+  width: fit-content;
+  height: fit-content;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 2px;
+  background-color: #cdcbcb;
+  display: flex;
+  flex-direction: column;
+  border-left: 3px solid rgba(238, 233, 233, 0.996);
+  border-top: 3px solid rgba(238, 233, 233, 0.996);
+  border-right: 3px solid var(--main-grey-color);
+  border-bottom: 3px solid var(--main-grey-color);
+  border-radius: 3px;
+ }
+
+.night-mode-main-color {
+  background-color: #645e5e;
+  border-left: 3px solid rgb(137 135 135 / 100%);
+  border-top: 3px solid rgb(124 119 119 / 100%);
+  border-right: 4px solid rgb(33 31 31);
+  border-bottom: 4px solid rgb(36 34 34);
+}
+
+.game-wrapper {
+  position: relative;
+  padding: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 4px var(--main-grey-color) solid;
+  border-right: 4px var(--main-grey-color) solid;
+  border-left: 5px rgb(248, 245, 245) solid;
+  border-top: 4px rgb(248, 245, 245) solid;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-bottom: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.night-mode-borders {
+  border-bottom: 4px rgb(58 53 53) solid;
+  border-right: 4px rgb(58 53 53) solid;
+  border-left: 5px #978d8d solid;
+  border-top: 4px #978d8d solid;
+}
+
+.command-bar {
+  height: 34px;
+  background-color: #112b92;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  font-weight: 500;
+  font-size: 17px;
+  gap: 5px;
+}
+
+.command-bar-night {
+  background-color: #061241;
+  color: grey;
+}
+
+.menu-bar {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: rgb(37, 37, 37);
+  height: 30px;
+  display: flex;
+  position: relative;
+}
+
+.menu-item {
+  cursor: pointer;
+}
+
+.menu-wrapper {
+  width: 100px;
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-cont {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 30px;
+  width: 200px;
+  padding-bottom: 8px;
+  border-radius: 2px;
+  background-color: #e2dfdf;
+  z-index: 5;
+  border: 1px solid #cdcbcb;
+  box-shadow: 3px 3px 10px 0px rgba(107, 106, 106, 0.508);
+  display: none;
+}
+
+
+.menu-cont-item {
+  padding-left: 40px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu-cont-item:hover {
+  background-color: #cecaca;
+}
+
+.sound-tick {
+  padding-left: 7px;
+}
+
+.divide-bar {
+  width: 170px;
+  height: 2px;
+  background-color: #cdcbcb;
+  margin: 5px auto;
+}
+
+.divide-bar-night {
+  background-color: black;
+  border-radius: 30%;
+}
+
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  border-left: 3px var(--main-grey-color) solid;
+  border-top: 3px var(--main-grey-color) solid;
+  border-right: 3px rgb(248, 245, 245) solid;
+  border-bottom: 3px rgb(248, 245, 245) solid;
+  padding: 5px;
+  font-family: 'Calculator';
+  font-size: 30px;
+}
+
+.time,
+.clicks,
+.mines-left-div,
+.flages-left-div {
+  border-left: 3px var(--main-grey-color) solid;
+  border-top: 3px var(--main-grey-color) solid;
+  border-right: 3px rgb(248, 245, 245) solid;
+  border-bottom: 3px rgb(248, 245, 245) solid;
+  padding-left: 3px;
+  padding-right: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.status-night {
+  border-left: 3px rgb(58 53 53) solid;
+  border-top: 3px rgb(58 53 53) solid;
+  border-right: 3px #978d8d solid;
+  border-bottom: 3px #978d8d solid;
+}
+
+.flages-left-div {
+  box-sizing: border-box;
+  min-width: 66.5px;
+  padding-left: 0px;
+}
+
+.time,
+.clicks {
+  background-color: black;
+  color: red;
+}
+
+.text-night-one {
+  color: #b00d0d;
+}
+
+.text-night-two {
+  color: black;
+}
+
+.mines-left-div,
+.flages-left-div {
+  color: rgb(96, 94, 94);
+}
+
+.time {
+  width: 52px;
+}
+
+.clicks {
+  width: 45px;
+}
+
+.mines-left-img,
+.flages-left-img {
+  margin-right: 5px
+}
+
+.game-field {
+  border-left: 4px var(--main-grey-color) solid;
+  border-top: 4px var(--main-grey-color) solid;
+  border-right: 4px rgb(248, 245, 245) solid;
+  border-bottom: 4px rgb(248, 245, 245) solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.game-field-night {
+  border-left: 4px #3f3a3a solid;
+  border-top: 4px #3b3939 solid;
+  border-right: 4px #817676 solid;
+  border-bottom: 4px #706767 solid;
+}
+
+.beginner-size {
+  width: 65vw;
+  max-width: 500px;
+}
+
+.interm-size {
+  width: 87vw;
+  max-width: 540px;
+}
+
+.expert-size {
+  width: 89vw;
+}
+
+.cell {
+  box-sizing: border-box;
+  border: 1px var(--main-grey-color) solid;
+  cursor: pointer;
+  border-bottom: 4px var(--main-grey-color) solid;
+  border-right: 4px var(--main-grey-color) solid;
+  border-left: 4px rgb(248, 245, 245) solid;
+  border-top: 4px rgb(248, 245, 245) solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Minesweeper";
+  font-size: 16px;
+}
+
+
+
+.cell-bgn-size {
+  width: 6.5vw;
+  height: 6.5vw;
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.cell-int-size {
+  width: 5.8vw;
+  height: 5.8vw;
+}
+
+.cell-exp-size {
+  width: 3.5vw;
+  height: 3.5vw;
+  border-width: 3.5px;
+  font-size: 10px;
+}
+
+.cell-night-mode {
+  border-bottom-color: rgb(58 53 53);
+  border-right-color: rgb(58 53 53);
+  border-left-color: #978d8d;
+  border-top-color: #978d8d;
+}
+
+.cell-opened,
+.cell-clicked {
+  border: 1px solid var(--main-grey-color) !important;
+}
+
+.flag {
+  background: url(/src/assets/images/flag-icon.png);
+  background-size: 100% auto;
+}
+
+.mine {
+  background: url(/src/assets/images/mine-icon.png);
+  background-size: 100% auto;
+}
+
+.message {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  color: rgb(0, 0, 1);
+  font-size: 24px;
+  text-align: center;
+}
+
+.info-text {
+  color: rgb(0, 0, 1);
+  font-size: 24px;
+  text-align: center;
+}
+
+/* Mines number container  */
+.mines-nmb {
+  width: 250px;
+  height: 150px;
+  z-index: 10;
+  border: 1px solid rgb(184, 183, 183);
+  background-color: #e2dfdf;
+  position: absolute;
+  top: 30px;
+  border-radius: 4px;
+  box-shadow: 3px 3px 10px 0px rgba(107, 106, 106, 0.508);
+  display: none;
+  flex-direction: column;
+}
+
+.mines-nmb-hdn {
+  margin-right: 90px
+}
+
+.comm-bar-mines,
+.comm-bar-scores {
+  background-color: #ebeaea;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cross {
+  cursor: pointer;
+  border-top-right-radius: 3px;
+}
+
+.cross:hover {
+  background-color: rgb(195, 9, 9);
+}
+
+.form-div {
+  position: absolute;
+  top: 60px;
+  left: 30px;
+}
+
+.mines-input {
+  width: 30px;
+  margin-left: 5px;
+  border: none;
+  border-bottom: 2px solid rgb(154, 152, 152);
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  appearance: textfield;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+.btn {
+  width: 70px;
+  height: 28px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+
+  background-color: #f9f5f5;
+  border-radius: 4px;
+  border: 2px solid #cecaca;
+  transition: 0.1s all;
+}
+
+.btn:hover {
+  border: 2px solid rgb(115, 170, 188);
+  background-color: rgb(207, 220, 233);
+}
+
+.btn:active {
+  background-color: rgb(190, 206, 220);
+}
+
+.ok-btn.mines-number {
+  top: 58px;
+  left: 125px;
+}
+
+.cancel-btn.mines-number {
+  top: 100px;
+  left: 125px;
+}
+
+
+.night-mode {
+  background-color: #2f2d2d;
+}
+
+/* BEST SCORES  */
+
+.best-scores {
+  min-height: 350px;
+  z-index: 10;
+  border: 1px solid rgb(184, 183, 183);
+  background-color: #e2dfdf;
+  position: absolute;
+  top: 30px;
+  border-radius: 4px;
+  box-shadow: 3px 3px 10px 0px rgba(107, 106, 106, 0.508);
+  display: none;
+  flex-direction: column;
+}
+
+.menu-cont-night {
+  background-color: #645e5e;
+  color: black;
+  border-color: black;
+}
+
+.best-scores-hdn {
+  margin-right: 125px;
+}
+
+.res-lvl-div {
+  padding: 20px 25px 0px 25px;
+
+}
+
+.res-time-div {
+  margin: 10px 0px;
+  padding: 10px 10px;
+  border-radius: 4px;
+}
+
+.scores-radio {
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.ok-btn.best-res {
+  position: static;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.cancel-btn.best-res {
+  top: 100px;
+  left: 125px;
+}
+
+.no-display {
+  display: none;
+
+}
+
+.new-game-btn {
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 0 0 1px var(--main-grey-color);
+  border-bottom: 4px var(--main-grey-color) solid;
+  border-right: 4px var(--main-grey-color) solid;
+  border-left: 4px rgb(248, 245, 245) solid;
+  border-top: 4px rgb(248, 245, 245) solid;
+  background-color: #cdcbcb;
+  cursor: pointer;
+  background-image: url(/src/assets/images/start-game-face.png);
+  background-size: 90% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.new-game-btn-click {
+  background-image: url(/src/assets/images/click-face.png);
+  background-size: 160% auto;
+}
+.new-game-btn-win {
+  background-image: url(/src/assets/images/win-face.png);
+  background-size: 100% auto;
+}
+.new-game-btn-lose {
+  background-image: url(/src/assets/images/lose-face.png);
+  background-size: 120% auto;
+}
+
+.new-game-btn:active {
+  border-left: 4px var(--main-grey-color) solid;
+  border-top: 4px var(--main-grey-color) solid;
+  border-right: 4px rgb(248, 245, 245) solid;
+  border-bottom: 4px rgb(248, 245, 245) solid;
+}
+
+.new-game-btn-night {
+  background-color: #645e5e;
+  border-bottom: 4px rgb(58 53 53) solid;
+  border-right: 4px rgb(58 53 53) solid;
+  border-left: 4px #978d8d solid;
+  border-top: 4px #978d8d solid;
+  box-shadow: none;
+}
+
+.appearing {
+  transition: 0.3s all linear;
+  display: flex;
+}
+
+.bombs1 {
+  color: blue;
+}
+
+.bombs2 {
+  color: green;
+}
+
+.bombs3 {
+  color: red;
+}
+
+.bombs4 {
+  color: darkblue;
+}
+
+.bombs5 {
+  color: brown;
+}
+
+.bombs6 {
+  color: rgb(10, 137, 137);
+}
+
+.bombs7 {
+  color: purple;
+}
+
+.bombs8 {
+  color: grey;
+}
+
+@media screen and (min-width: 600px) {
+  .wrapper {
+    margin-top: 10px;
+  }
+
+  .cell-bgn-size {
+    font-size: 18px;
+    border-width: 5px;
+  }
+
+  .cell-int-size {
+    width: 5vw;
+    height: 5vw;
+    max-width: 36px;
+    max-height: 36px;
+    border-width: 5px;
+  }
+
+  .cell-exp-size {
+    width: 20px;
+    height: 20px;
+  }
+
+  .interm-size {
+    width: 79vw;
+  }
+
+  .expert-size {
+    width: 85vw;
+    max-width: 519px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .wrapper {
+    margin-top: 0px;
+
+  }
+
+  .cell-bgn-size {
+    font-size: 22px;
+    border-width: 6px;
+  }
+
+  .cell-exp-size {
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+  }
+
+  .expert-size {
+    max-width: 552px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+
+  .cell-bgn-size {
+    font-size: 25px;
+    border-width: 7px;
+  }
+
+  .command-bar,
+  .menu-bar {
+    font-size: 17px;
+  }
+
+}
